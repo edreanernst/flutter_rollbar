@@ -9,8 +9,9 @@ import 'package:meta/meta.dart';
 class RollbarApi {
   final http.Client _client = http.Client();
   Future<http.Response> sendReport({@required String accessToken, @required String message, @required List<RollbarTelemetry> telemetry, Map clientData, RollbarPerson person, String environment}) {
+    Uri uri = Uri.parse('https://api.rollbar.com/api/1/item/');
     return _client.post(
-      'https://api.rollbar.com/api/1/item/',
+      uri,
       body: json.encode(
         {
           'access_token': accessToken,
